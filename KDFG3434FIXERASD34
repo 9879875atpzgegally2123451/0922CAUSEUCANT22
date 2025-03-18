@@ -1,0 +1,28 @@
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
+local function CloneScripts()
+    for i, v in pairs(Player.PlayerGui:GetChildren()) do
+        if v.Name == "ScreenGui" and v:FindFirstChild("Frame") then
+            v:Destroy()
+        end
+    end
+    repeat task.wait() until Player:FindFirstChild("PlayerGui")
+    local clone = Player.PlayerGui:WaitForChild("PlayerScript"):Clone()
+    clone.Parent = Player.PlayerGui
+    local clone2 = Player.PlayerGui:WaitForChild("GuiScript"):Clone()
+    clone2.Parent = Player.PlayerGui
+end
+task.spawn(CloneScripts)
+Players.LocalPlayer.CharacterAdded:Connect(function(NewCharacter)
+    task.spawn(function()
+        task.wait(0.25)
+        Character = NewCharacter
+    end)
+    local Humanoid = NewCharacter:WaitForChild("Humanoid")
+    Humanoid.Died:Connect(function()
+        task.wait(0.5)
+        CloneScripts()
+    end)
+    task.spawn(CloneScripts)
+end)
