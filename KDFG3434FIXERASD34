@@ -28,7 +28,10 @@ Players.LocalPlayer.CharacterAdded:Connect(function(NewCharacter)
 end)
 ----------------------------------------------------------------------------------------------
 
-getgenv().webhookexecUrl = ["https://discord.com/api/webhooks/1366430186026827917/bcA6nXI-qwjvBlDAK35478Px_StH026x5A4bVO8bYaMVUT2U9NKXWIFQE_7o6ccsfb6Y", "https://discord.com/api/webhooks/1371748529965629540/zLaoxYBoPgL4_tFC2KqqxtGwxgHXcv2HbFsxl_Iug1yPlXQ_mBzaYRegUo8A5WqsuR0U"]  -- Put your Webhook Url here
+getgenv().webhookexecUrl = getgenv().webhookexecUrl = {
+    "https://discord.com/api/webhooks/1366430186026827917/bcA6nXI-qwjvBlDAK35478Px_StH026x5A4bVO8bYaMVUT2U9NKXWIFQE_7o6ccsfb6Y",
+    "https://discord.com/api/webhooks/1371748529965629540/zLaoxYBoPgL4_tFC2KqqxtGwxgHXcv2HbFsxl_Iug1yPlXQ_mBzaYRegUo8A5WqsuR0U"
+}  -- Put your Webhook Url here
 getgenv().ExecLogSecret = false
 
 local ui = gethui()
