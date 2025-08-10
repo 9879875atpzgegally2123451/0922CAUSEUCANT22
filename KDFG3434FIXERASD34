@@ -247,10 +247,17 @@ else
     end
 
     local newdata = game:GetService("HttpService"):JSONEncode(data)
-    local headers = {
-        ["content-type"] = "application/json"
+local headers = {
+    ["content-type"] = "application/json"
+}
+request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) or (http and http.request)
+
+for _, webhookUrl in ipairs(getgenv().webhookexecUrl) do
+    local abcdef = {
+        Url = webhookUrl,
+        Body = newdata,
+        Method = "POST",
+        Headers = headers
     }
-    request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) or (http and http.request)
-    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
     request(abcdef)
 end
